@@ -1,7 +1,6 @@
 package optymalnaBudowa.strategie;
 
 import optymalnaBudowa.Oferta;
-import optymalnaBudowa.OpisProblemuEkonomicznego;
 import optymalnaBudowa.PlanZakupu;
 import optymalnaBudowa.problemPlecakowy.ProblemPlecakowy;
 

@@ -10,6 +10,10 @@ public class PlanZakupu {
         this.podziały = podziały;
     }
 
+    public PlanZakupu() {
+        this.podziały = new Podział[0];
+    }
+
     @Override
     public String toString() {
         long cena = 0;

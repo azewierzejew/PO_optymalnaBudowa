@@ -105,7 +105,7 @@ public class ProblemPlecakowy {
         ZbiórLiczbowy pełny = new ZbiórLiczbowy(ilość);
         ZbiórLiczbowy pusty = new ZbiórLiczbowy(0);
 
-        najlepszyWynik.put(pusty.kopia(), new Wynik(0, null));
+        najlepszyWynik.put(pusty.kopia(), new Wynik(0, new PlanZakupu()));
 
         rozwiążRekurencyjnie(pełny);
 
