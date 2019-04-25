@@ -14,11 +14,10 @@ public class StrategiaMaksymalistyczna extends Strategia {
         int ilośćZałatwionych = 0;
         boolean[] załatwione = new boolean[projekt.length];
         ArrayList<Podział> podziały = new ArrayList<Podział>();
-        long długość = cennik[cennik.length - 1].długość();
-        long cena = cennik[cennik.length - 1].cena();
+        Oferta oferta = cennik[cennik.length - 1];
 
         while (ilośćZałatwionych < ilość) {
-            long zostało = długość;
+            long zostało = oferta.długość();
             ArrayList<Long> kawałki = new ArrayList<Long>();
             for (int i = ilość - 1; i >= 0; i--) {
                 if (!załatwione[i]) {
@@ -30,7 +29,7 @@ public class StrategiaMaksymalistyczna extends Strategia {
                     }
                 }
             }
-            podziały.add(new Podział(długość, cena, kawałki.toArray(new Long[0])));
+            podziały.add(new Podział(oferta, kawałki.toArray(new Long[0])));
 
         }
 

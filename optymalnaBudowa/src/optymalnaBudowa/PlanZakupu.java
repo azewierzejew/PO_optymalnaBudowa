@@ -18,8 +18,9 @@ public class PlanZakupu {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Podział podział : podziały) {
-            cena += podział.cena();
-            long długość = podział.długość();
+            Oferta oferta = podział.oferta();
+            cena += oferta.cena();
+            long długość = oferta.długość();
             stringBuilder.append(długość);
 
             Integer ilośćKawałków = podział.ilośćKawałków();

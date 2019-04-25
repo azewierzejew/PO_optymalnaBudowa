@@ -21,10 +21,8 @@ public class StrategiaMinimalistyczna extends Strategia {
             while (numerOferty > 0 && cennik[numerOferty - 1].długość() >= najdłuższy) {
                 numerOferty--;
             }
-
-            long długość = cennik[numerOferty].długość();
-            long zostało = długość;
-            long cena = cennik[numerOferty].cena();
+            Oferta oferta = cennik[numerOferty];
+            long zostało = oferta.długość();
             najdłuższy = -1;
             ArrayList<Long> kawałki = new ArrayList<Long>();
             for (int i = ilość - 1; i >= 0; i--) {
@@ -39,7 +37,7 @@ public class StrategiaMinimalistyczna extends Strategia {
                     }
                 }
             }
-            podziały.add(new Podział(długość, cena, kawałki.toArray(new Long[0])));
+            podziały.add(new Podział(oferta, kawałki.toArray(new Long[0])));
 
         }
 

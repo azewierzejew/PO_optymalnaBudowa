@@ -2,22 +2,16 @@ package optymalnaBudowa;
 
 public class Podział {
 
-    private final long długość;
-    private final long cena;
+    private final Oferta oferta;
     private final Long[] kawałki;
 
-    public Podział(long długość, long cena, Long[] kawałki) {
-        this.długość = długość;
-        this.cena = cena;
+    public Podział(Oferta oferta, Long[] kawałki) {
+        this.oferta = oferta;
         this.kawałki = kawałki;
     }
 
-    public long długość() {
-        return długość;
-    }
-
-    public long cena() {
-        return cena;
+    public Oferta oferta() {
+        return oferta;
     }
 
     public int ilośćKawałków() {
