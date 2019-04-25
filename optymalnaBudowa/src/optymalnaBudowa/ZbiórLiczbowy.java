@@ -2,6 +2,7 @@ package optymalnaBudowa;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ZbiórLiczbowy implements Iterable<Integer> {
 
@@ -15,6 +16,10 @@ public class ZbiórLiczbowy implements Iterable<Integer> {
             }
         }
         return maximum;
+    }
+
+    private ZbiórLiczbowy(boolean[] liczbaNależy) {
+        this.liczbaNależy = liczbaNależy;
     }
 
     public ZbiórLiczbowy(int limit) {
@@ -59,17 +64,17 @@ public class ZbiórLiczbowy implements Iterable<Integer> {
         @Override
         public ZbiórLiczbowy next() {
             boolean akumulator = true;
-            for (int i = 0; i < liczbaNależyZbiór.length && akumulator; i++) {
-                if (!nadmaska.bity[i]) {
+            for (int i = 0; i < limit && akumulator; i++) {
+                if (!liczbaNależyZbiór[i]) {
                     continue;
                 }
-                bity[i] ^= akumulator;
-                akumulator = akumulator && !bity[i];
+                liczbaNależyPodzbiór[i] ^= akumulator;
+                akumulator = akumulator && !liczbaNależyPodzbiór[i];
             }
             if (akumulator == true) { // przeszliśmy wszystkie bity
-                return false;
+                throw new NoSuchElementException();
             }
-            return true;
+            return new ZbiórLiczbowy(liczbaNależyPodzbiór);
         }
 
     }
