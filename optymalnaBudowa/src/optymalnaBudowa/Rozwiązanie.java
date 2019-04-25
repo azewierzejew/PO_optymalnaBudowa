@@ -19,19 +19,19 @@ public class Rozwiązanie {
         for (int i = 0; i < rozmiarCennika; i++) {
             String wiersz = wiersze.nextLine();
             String[] liczby = wiersz.split(" ");
-            int długość = Integer.parseInt(liczby[0]);
-            int cena = Integer.parseInt(liczby[1]);
+            long długość = Long.parseLong(liczby[0]);
+            long cena = Long.parseLong(liczby[1]);
             cennik[i] = new Oferta(długość, cena);
         }
 
         int rozmiarProjektu;
         rozmiarProjektu = Integer.parseInt(wiersze.nextLine());
-        Integer[] projekt = new Integer[rozmiarProjektu];
+        Long[] projekt = new Long[rozmiarProjektu];
 
         String wiersz = wiersze.nextLine();
         String[] liczby = wiersz.split(" ");
         for (int i = 0; i < rozmiarProjektu; i++) {
-            projekt[i] = Integer.parseInt(liczby[i]);
+            projekt[i] = Long.parseLong(liczby[i]);
         }
 
         String nazwaStrategii = wiersze.nextLine();

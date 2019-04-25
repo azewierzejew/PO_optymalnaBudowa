@@ -4,6 +4,6 @@ import optymalnaBudowa.Oferta;
 
 public interface OpisProblemuPlecakowego {
 
-    int nowyWynik(Oferta oferta, int wynikPodproblemu);
+    long nowyWynik(Oferta oferta, long wynikPodproblemu);
 
 }

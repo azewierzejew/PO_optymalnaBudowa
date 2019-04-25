@@ -1,42 +1,35 @@
 package optymalnaBudowa.problemPlecakowy;
 
-import java.util.NavigableMap;
+import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
-import optymalnaBudowa.MaskaBitowa;
 import optymalnaBudowa.Oferta;
 import optymalnaBudowa.PlanZakupu;
-import optymalnaBudowa.Podział;
 
 public class ProblemPlecakowy {
 
     private final OpisProblemuPlecakowego opisProblemu;
+    private Oferta[] cennik;
+    private Long[] projekt;
+    private Map<ZbiórLiczbowy, Wynik> najlepszyWynik;
 
     public ProblemPlecakowy(OpisProblemuPlecakowego opisProblemu) {
         this.opisProblemu = opisProblemu;
     }
 
-    static private int kolejnaPodmaskaBitowa(int podmaska, int maska) {
-        podmaska++;
-        while ((podmaska & (~maska)) != 0) {
-            podmaska += podmaska & (~maska);
-        }
-        return podmaska;
-    }
-
     private class Wynik {
 
         private final long wynik;
-        private final Podział sposób;
+        private final PlanZakupu plan;
 
-        public Wynik(long wynik, Podział sposób) {
-            super();
+        public Wynik(long wynik, PlanZakupu plan) {
             this.wynik = wynik;
-            this.sposób = sposób;
+            this.plan = plan;
         }
 
-        public Podział sposób() {
-            return sposób;
+        public PlanZakupu plan() {
+            return plan;
         }
 
         public Wynik wybierzLepszy(Wynik wynik) {
@@ -48,23 +41,35 @@ public class ProblemPlecakowy {
 
     }
 
-    public PlanZakupu rozwiąż(Oferta[] cennik, Integer[] projekt) {
+    private void rozwiążRekurencyjnie(ZbiórLiczbowy zbiór) {
+        Wynik wynik = najlepszyWynik.get(zbiór);
+        if (wynik != null)
+            return;
+
+        wynik = new Wynik(Long.MAX_VALUE, null);
+        List<ZbiórLiczbowy> podzbiory = zbiór.podzbiory();
+
+        for (ZbiórLiczbowy podzbiór : podzbiory) {
+
+        }
+    }
+
+    public PlanZakupu rozwiąż(Oferta[] cennik, Long[] projekt) {
+        this.cennik = cennik;
+        this.projekt = projekt;
+
         int ilość = projekt.length;
 
-        NavigableMap<MaskaBitowa, Wynik> najlepszyWynik = new TreeMap<MaskaBitowa, Wynik>();
+        najlepszyWynik = new TreeMap<ZbiórLiczbowy, Wynik>();
 
-        MaskaBitowa maska = new MaskaBitowa(ilość);
+        ZbiórLiczbowy pełny = new ZbiórLiczbowy(ilość);
+        ZbiórLiczbowy pusty = new ZbiórLiczbowy(0);
 
-        najlepszyWynik.put(maska.kopia(), new Wynik(0, null));
+        najlepszyWynik.put(pusty.kopia(), new Wynik(0, null));
 
-        do {
-            MaskaBitowa maskaWybranych = new MaskaBitowa(ilość);
-            while (maskaWybranych.kolejnaPodmaska(maska)) {
+        rozwiążRekurencyjnie(pełny);
 
-            }
-        } while (maska.kolejnaMaska());
-
-        return null;
+        return najlepszyWynik.get(pełny).plan();
     }
 
 }

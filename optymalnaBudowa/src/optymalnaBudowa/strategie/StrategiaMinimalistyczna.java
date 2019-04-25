@@ -9,24 +9,24 @@ import optymalnaBudowa.Podział;
 public class StrategiaMinimalistyczna extends Strategia {
 
     @Override
-    public PlanZakupu policzPlan(Oferta[] cennik, Integer[] projekt) {
+    public PlanZakupu policzPlan(Oferta[] cennik, Long[] projekt) {
         int ilość = projekt.length;
         int ilośćZałatwionych = 0;
         boolean[] załatwione = new boolean[projekt.length];
         ArrayList<Podział> podziały = new ArrayList<Podział>();
         int numerOferty = cennik.length - 1;
-        int najdłuższy = projekt[ilość - 1];
+        long najdłuższy = projekt[ilość - 1];
 
         while (ilośćZałatwionych < ilość) {
             while (numerOferty > 0 && cennik[numerOferty - 1].długość() >= najdłuższy) {
                 numerOferty--;
             }
 
-            int długość = cennik[numerOferty].długość();
-            int zostało = długość;
-            int cena = cennik[numerOferty].cena();
+            long długość = cennik[numerOferty].długość();
+            long zostało = długość;
+            long cena = cennik[numerOferty].cena();
             najdłuższy = -1;
-            ArrayList<Integer> kawałki = new ArrayList<Integer>();
+            ArrayList<Long> kawałki = new ArrayList<Long>();
             for (int i = ilość - 1; i >= 0; i--) {
                 if (!załatwione[i]) {
                     if (projekt[i] <= zostało) {
@@ -39,7 +39,7 @@ public class StrategiaMinimalistyczna extends Strategia {
                     }
                 }
             }
-            podziały.add(new Podział(długość, cena, kawałki.toArray(new Integer[0])));
+            podziały.add(new Podział(długość, cena, kawałki.toArray(new Long[0])));
 
         }
 

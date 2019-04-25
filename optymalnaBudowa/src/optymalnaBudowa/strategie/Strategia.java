@@ -5,6 +5,6 @@ import optymalnaBudowa.PlanZakupu;
 
 public abstract class Strategia {
 
-    public abstract PlanZakupu policzPlan(Oferta[] cennik, Integer[] projekt);
+    public abstract PlanZakupu policzPlan(Oferta[] cennik, Long[] projekt);
 
 }

@@ -2,19 +2,19 @@ package optymalnaBudowa;
 
 public class Oferta {
 
-    private final int długość;
-    private final int cena;
+    private final long długość;
+    private final long cena;
 
-    public Oferta(int długość, int cena) {
+    public Oferta(long długość, long cena) {
         this.długość = długość;
         this.cena = cena;
     }
 
-    public Integer długość() {
+    public long długość() {
         return długość;
     }
 
-    public Integer cena() {
+    public long cena() {
         return cena;
     }
 

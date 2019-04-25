@@ -9,17 +9,17 @@ import optymalnaBudowa.Podział;
 public class StrategiaMaksymalistyczna extends Strategia {
 
     @Override
-    public PlanZakupu policzPlan(Oferta[] cennik, Integer[] projekt) {
+    public PlanZakupu policzPlan(Oferta[] cennik, Long[] projekt) {
         int ilość = projekt.length;
         int ilośćZałatwionych = 0;
         boolean[] załatwione = new boolean[projekt.length];
         ArrayList<Podział> podziały = new ArrayList<Podział>();
-        int długość = cennik[cennik.length - 1].długość();
-        int cena = cennik[cennik.length - 1].cena();
+        long długość = cennik[cennik.length - 1].długość();
+        long cena = cennik[cennik.length - 1].cena();
 
         while (ilośćZałatwionych < ilość) {
-            int zostało = długość;
-            ArrayList<Integer> kawałki = new ArrayList<Integer>();
+            long zostało = długość;
+            ArrayList<Long> kawałki = new ArrayList<Long>();
             for (int i = ilość - 1; i >= 0; i--) {
                 if (!załatwione[i]) {
                     if (projekt[i] <= zostało) {
@@ -30,7 +30,7 @@ public class StrategiaMaksymalistyczna extends Strategia {
                     }
                 }
             }
-            podziały.add(new Podział(długość, cena, kawałki.toArray(new Integer[0])));
+            podziały.add(new Podział(długość, cena, kawałki.toArray(new Long[0])));
 
         }
 

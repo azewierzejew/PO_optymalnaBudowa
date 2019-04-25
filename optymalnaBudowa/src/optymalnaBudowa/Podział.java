@@ -2,21 +2,21 @@ package optymalnaBudowa;
 
 public class Podział {
 
-    private final int długość;
-    private final int cena;
-    private final Integer[] kawałki;
+    private final long długość;
+    private final long cena;
+    private final Long[] kawałki;
 
-    public Podział(int długość, int cena, Integer[] kawałki) {
+    public Podział(long długość, long cena, Long[] kawałki) {
         this.długość = długość;
         this.cena = cena;
         this.kawałki = kawałki;
     }
 
-    public int długość() {
+    public long długość() {
         return długość;
     }
 
-    public int cena() {
+    public long cena() {
         return cena;
     }
 
@@ -24,7 +24,7 @@ public class Podział {
         return kawałki.length;
     }
 
-    public int kawałek(Integer numer) {
+    public long kawałek(int numer) {
         return kawałki[numer];
     }
 

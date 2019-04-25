@@ -5,7 +5,7 @@ import optymalnaBudowa.problemPlecakowy.OpisProblemuPlecakowego;
 public class OpisProblemuEkonomicznego implements OpisProblemuPlecakowego {
 
     @Override
-    public int nowyWynik(Oferta oferta, int wynikPodproblemu) {
+    public long nowyWynik(Oferta oferta, long wynikPodproblemu) {
         return oferta.cena() + wynikPodproblemu;
     }
 

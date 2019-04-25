@@ -6,7 +6,7 @@ import optymalnaBudowa.PlanZakupu;
 public class StrategiaEkologiczna extends Strategia {
 
     @Override
-    public PlanZakupu policzPlan(Oferta[] cennik, Integer[] projekt) {
+    public PlanZakupu policzPlan(Oferta[] cennik, Long[] projekt) {
         // TODO Auto-generated method stub
         return null;
     }

@@ -8,7 +8,7 @@ import optymalnaBudowa.problemPlecakowy.ProblemPlecakowy;
 public class StrategiaEkonomiczna extends Strategia {
 
     @Override
-    public PlanZakupu policzPlan(Oferta[] cennik, Integer[] projekt) {
+    public PlanZakupu policzPlan(Oferta[] cennik, Long[] projekt) {
         ProblemPlecakowy plecak = new ProblemPlecakowy(new OpisProblemuEkonomicznego());
 
         return plecak.rozwiąż(cennik, projekt);
