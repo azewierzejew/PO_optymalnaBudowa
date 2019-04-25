@@ -47,6 +47,11 @@ public class ProblemPlecakowy {
             return new Wynik(nowyKoszt, nowyPlan);
         }
 
+        @Override
+        public String toString() {
+            return "koszt: " + koszt + " plan: " + plan;
+        }
+
     }
 
     private void rozwiążRekurencyjnie(ZbiórLiczbowy zbiór) {
@@ -70,25 +75,17 @@ public class ProblemPlecakowy {
             if (kawałki.isEmpty()) {
                 continue;
             }
-
-            Oferta najlepszaOferta = null;
+            rozwiążRekurencyjnie(poprzedni);
 
             for (Oferta oferta : cennik) {
                 if (oferta.długość() >= sumaDługości) {
-                    najlepszaOferta = oferta;
-                    break;
+                    Wynik wynikPoprzedniego = najlepszyWynik.get(poprzedni);
+                    Podział podział = new Podział(oferta, kawałki.toArray(new Long[0]));
+                    Wynik nowyWynik = wynikPoprzedniego.dodaj(oferta, podział);
+                    wynik = wynik.wybierzLepszy(nowyWynik);
                 }
             }
 
-            if (najlepszaOferta == null) {
-                continue;
-            }
-
-            rozwiążRekurencyjnie(poprzedni);
-            Wynik wynikPoprzedniego = najlepszyWynik.get(poprzedni);
-            Podział podział = new Podział(najlepszaOferta, kawałki.toArray(new Long[0]));
-            Wynik nowyWynik = wynikPoprzedniego.dodaj(najlepszaOferta, podział);
-            wynik = wynik.wybierzLepszy(nowyWynik);
         }
 
         najlepszyWynik.put(zbiór.kopia(), wynik);

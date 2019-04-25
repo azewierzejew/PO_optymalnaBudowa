@@ -79,4 +79,15 @@ public class ZbiórLiczbowy implements Iterable<Integer>, Comparable<ZbiórLiczb
         return new ZbiórLiczbowy(liczbaNależy);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("{");
+        for (int i : this) {
+            builder.append(i + ", ");
+        }
+        builder.append("}");
+        return builder.toString();
+    }
+
 }

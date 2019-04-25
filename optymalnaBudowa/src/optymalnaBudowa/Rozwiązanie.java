@@ -11,31 +11,27 @@ import optymalnaBudowa.strategie.StrategiaMinimalistyczna;
 public class Rozwiązanie {
 
     public static void main(String[] args) {
-        Scanner wiersze = new Scanner(System.in);
+        Scanner wejście = new Scanner(System.in);
 
         int rozmiarCennika;
-        rozmiarCennika = Integer.parseInt(wiersze.nextLine());
+        rozmiarCennika = wejście.nextInt();
         Oferta[] cennik = new Oferta[rozmiarCennika];
         for (int i = 0; i < rozmiarCennika; i++) {
-            String wiersz = wiersze.nextLine();
-            String[] liczby = wiersz.split(" ");
-            long długość = Long.parseLong(liczby[0]);
-            long cena = Long.parseLong(liczby[1]);
+            long długość = wejście.nextLong();
+            long cena = wejście.nextLong();
             cennik[i] = new Oferta(długość, cena);
         }
 
         int rozmiarProjektu;
-        rozmiarProjektu = Integer.parseInt(wiersze.nextLine());
+        rozmiarProjektu = wejście.nextInt();
         Long[] projekt = new Long[rozmiarProjektu];
 
-        String wiersz = wiersze.nextLine();
-        String[] liczby = wiersz.split(" ");
         for (int i = 0; i < rozmiarProjektu; i++) {
-            projekt[i] = Long.parseLong(liczby[i]);
+            projekt[i] = wejście.nextLong();
         }
 
-        String nazwaStrategii = wiersze.nextLine();
-        wiersze.close();
+        String nazwaStrategii = wejście.next();
+        wejście.close();
 
         Strategia strategia = null;
 
