@@ -3,7 +3,7 @@ package optymalnaBudowa.strategie;
 import optymalnaBudowa.Oferta;
 import optymalnaBudowa.OpisProblemuEkonomicznego;
 import optymalnaBudowa.PlanZakupu;
-import optymalnaBudowa.ProblemPlecakowy;
+import optymalnaBudowa.problemPlecakowy.ProblemPlecakowy;
 
 public class StrategiaEkonomiczna extends Strategia {
 

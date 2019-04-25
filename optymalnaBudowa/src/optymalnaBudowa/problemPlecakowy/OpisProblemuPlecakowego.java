@@ -1,4 +1,6 @@
-package optymalnaBudowa;
+package optymalnaBudowa.problemPlecakowy;
+
+import optymalnaBudowa.Oferta;
 
 public interface OpisProblemuPlecakowego {
 

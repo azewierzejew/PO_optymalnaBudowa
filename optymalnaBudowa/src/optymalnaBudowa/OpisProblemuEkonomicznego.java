@@ -1,5 +1,7 @@
 package optymalnaBudowa;
 
+import optymalnaBudowa.problemPlecakowy.OpisProblemuPlecakowego;
+
 public class OpisProblemuEkonomicznego implements OpisProblemuPlecakowego {
 
     @Override
