@@ -60,7 +60,7 @@ public class ProblemPlecakowy {
             return;
 
         wynik = new Wynik(Long.MAX_VALUE, null);
-        List<ZbiórLiczbowy> podzbiory = zbiór.podzbiory();
+        Iterable<ZbiórLiczbowy> podzbiory = zbiór.podzbiory();
 
         for (ZbiórLiczbowy poprzedni : podzbiory) {
             long sumaDługości = 0;
@@ -75,6 +75,7 @@ public class ProblemPlecakowy {
             if (kawałki.isEmpty()) {
                 continue;
             }
+
             rozwiążRekurencyjnie(poprzedni);
 
             for (Oferta oferta : cennik) {
@@ -88,7 +89,7 @@ public class ProblemPlecakowy {
 
         }
 
-        najlepszyWynik.put(zbiór.kopia(), wynik);
+        najlepszyWynik.put(zbiór, wynik);
     }
 
     public PlanZakupu rozwiąż(Oferta[] cennik, Long[] projekt) {
@@ -102,7 +103,7 @@ public class ProblemPlecakowy {
         ZbiórLiczbowy pełny = new ZbiórLiczbowy(ilość);
         ZbiórLiczbowy pusty = new ZbiórLiczbowy(0);
 
-        najlepszyWynik.put(pusty.kopia(), new Wynik(0, new PlanZakupu()));
+        najlepszyWynik.put(pusty, new Wynik(0, new PlanZakupu()));
 
         rozwiążRekurencyjnie(pełny);
 

@@ -38,7 +38,7 @@ public class ZbiórLiczbowy implements Iterable<Integer>, Comparable<ZbiórLiczb
 
     @Override
     public Iterator<Integer> iterator() {
-        ArrayList<Integer> liczby = new ArrayList<Integer>();
+        List<Integer> liczby = new ArrayList<Integer>();
         for (int i = 0; i < liczbaNależy.length; i++) {
             if (liczbaNależy[i])
                 liczby.add(i);
@@ -46,7 +46,7 @@ public class ZbiórLiczbowy implements Iterable<Integer>, Comparable<ZbiórLiczb
         return liczby.iterator();
     }
 
-    public List<ZbiórLiczbowy> podzbiory() {
+    public Iterable<ZbiórLiczbowy> podzbiory() {
         List<ZbiórLiczbowy> lista = new ArrayList<ZbiórLiczbowy>();
         boolean[] liczbaNależyPodzbiór = new boolean[liczbaNależy.length];
         boolean akumulator = false;
@@ -73,10 +73,6 @@ public class ZbiórLiczbowy implements Iterable<Integer>, Comparable<ZbiórLiczb
                 return -1;
         }
         return 0;
-    }
-
-    public ZbiórLiczbowy kopia() {
-        return new ZbiórLiczbowy(liczbaNależy);
     }
 
     @Override
