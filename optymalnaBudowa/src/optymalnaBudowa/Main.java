@@ -8,7 +8,7 @@ import optymalnaBudowa.strategie.StrategiaEkonomiczna;
 import optymalnaBudowa.strategie.StrategiaMaksymalistyczna;
 import optymalnaBudowa.strategie.StrategiaMinimalistyczna;
 
-public class Rozwiązanie {
+public class Main {
 
     public static void main(String[] args) {
         Scanner wejście = new Scanner(System.in);
