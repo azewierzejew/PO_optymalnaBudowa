@@ -1,6 +1,7 @@
 package optymalnaBudowa.strategie;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import optymalnaBudowa.Oferta;
 import optymalnaBudowa.PlanZakupu;
@@ -13,12 +14,12 @@ public class StrategiaMaksymalistyczna extends Strategia {
         int ilość = projekt.length;
         int ilośćZałatwionych = 0;
         boolean[] załatwione = new boolean[projekt.length];
-        ArrayList<Podział> podziały = new ArrayList<Podział>();
+        List<Podział> podziały = new ArrayList<Podział>();
         Oferta oferta = cennik[cennik.length - 1];
 
         while (ilośćZałatwionych < ilość) {
             long zostało = oferta.długość();
-            ArrayList<Long> kawałki = new ArrayList<Long>();
+            List<Long> kawałki = new ArrayList<Long>();
             for (int i = ilość - 1; i >= 0; i--) {
                 if (!załatwione[i]) {
                     if (projekt[i] <= zostało) {
@@ -29,11 +30,11 @@ public class StrategiaMaksymalistyczna extends Strategia {
                     }
                 }
             }
-            podziały.add(new Podział(oferta, kawałki.toArray(new Long[0])));
+            podziały.add(new Podział(oferta, kawałki));
 
         }
 
-        return new PlanZakupu(podziały.toArray(new Podział[0]));
+        return new PlanZakupu(podziały);
     }
 
 }

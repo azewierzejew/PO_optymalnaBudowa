@@ -1,25 +1,42 @@
 package optymalnaBudowa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Podział {
 
     private final Oferta oferta;
-    private final Long[] kawałki;
+    private final List<Long> kawałki;
 
-    public Podział(Oferta oferta, Long[] kawałki) {
+    public Podział(Oferta oferta, List<Long> kawałki) {
         this.oferta = oferta;
-        this.kawałki = kawałki;
+        this.kawałki = new ArrayList<Long>(kawałki);
     }
 
-    public Oferta oferta() {
-        return oferta;
+    public long cena() {
+        return oferta.cena();
     }
 
-    public int ilośćKawałków() {
-        return kawałki.length;
+    public long odpadki() {
+        long długość = oferta.długość();
+
+        for (long kawałek : kawałki) {
+            długość -= kawałek;
+        }
+
+        return długość;
     }
 
-    public long kawałek(int numer) {
-        return kawałki[numer];
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(oferta.długość());
+
+        for (long kawałek : kawałki) {
+            stringBuilder.append(" " + kawałek);
+        }
+
+        return stringBuilder.toString();
     }
 
 }

@@ -16,6 +16,7 @@ public class Rozwiązanie {
         int rozmiarCennika;
         rozmiarCennika = wejście.nextInt();
         Oferta[] cennik = new Oferta[rozmiarCennika];
+
         for (int i = 0; i < rozmiarCennika; i++) {
             long długość = wejście.nextLong();
             long cena = wejście.nextLong();

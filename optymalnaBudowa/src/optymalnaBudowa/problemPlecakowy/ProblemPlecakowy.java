@@ -80,7 +80,7 @@ public class ProblemPlecakowy {
             for (Oferta oferta : cennik) {
                 if (oferta.długość() >= sumaDługości) {
                     Wynik wynikPoprzedniego = najlepszyWynik.get(poprzedni);
-                    Podział podział = new Podział(oferta, kawałki.toArray(new Long[0]));
+                    Podział podział = new Podział(oferta, kawałki);
                     Wynik nowyWynik = wynikPoprzedniego.dodaj(oferta, podział);
                     wynik = wynik.wybierzLepszy(nowyWynik);
                 }

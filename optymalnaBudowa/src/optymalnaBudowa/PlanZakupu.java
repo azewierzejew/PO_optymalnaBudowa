@@ -1,17 +1,18 @@
 package optymalnaBudowa;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlanZakupu {
 
-    private final Podział[] podziały;
+    private final List<Podział> podziały;
 
-    public PlanZakupu(Podział[] podziały) {
-        this.podziały = podziały;
+    public PlanZakupu(List<Podział> podziały) {
+        this.podziały = new ArrayList<Podział>(podziały);
     }
 
     public PlanZakupu() {
-        this.podziały = new Podział[0];
+        this.podziały = new ArrayList<Podział>();
     }
 
     @Override
@@ -22,19 +23,9 @@ public class PlanZakupu {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Podział podział : podziały) {
-            Oferta oferta = podział.oferta();
-            cena += oferta.cena();
-            long długość = oferta.długość();
-            stringBuilder.append(długość);
-
-            Integer ilośćKawałków = podział.ilośćKawałków();
-            for (Integer i = 0; i < ilośćKawałków; i++) {
-                long kawałek = podział.kawałek(i);
-                długość -= kawałek;
-                stringBuilder.append(" " + kawałek);
-            }
-            odpadki += długość;
-            stringBuilder.append("\n");
+            cena += podział.cena();
+            odpadki += podział.odpadki();
+            stringBuilder.append(podział + "\n");
         }
 
         stringBuilder.insert(0, cena + "\n" + odpadki + "\n");
@@ -42,8 +33,8 @@ public class PlanZakupu {
     }
 
     public PlanZakupu dodajPodział(Podział podział) {
-        Podział[] podziały = Arrays.copyOf(this.podziały, this.podziały.length + 1);
-        podziały[podziały.length - 1] = podział;
+        List<Podział> podziały = new ArrayList<Podział>(this.podziały);
+        podziały.add(podział);
         return new PlanZakupu(podziały);
     }
 
